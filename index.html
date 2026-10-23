@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Tracker</title>
+    
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <header>
+        <h1>Internship Tracker</h1>
+        <p>Keep your career journey organized.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>My Dashboard</h2>
+
+            <div>
+                <h3>Total Applications</h3>
+                <p>{{ total }}</p>
+            </div>
+
+            <div>
+                <h3>Interviews</h3>
+                <p>{{ interview }}</p>
+            </div>
+
+            <div>
+                <h3>Offers</h3>
+                <p>{{ offers }}</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Add an Internship</h2>
+
+            <form action="{{ url_for('add_application') }}" method="POST">
+                <label for="company">Company Name</label>
+                <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    placeholder="e.g. Google"
+                    required
+                >
+
+                <label for="role">Job Role</label>
+                <input
+                    type="text"
+                    id="role"
+                    name="role"
+                    placeholder="e.g. Software Developer Intern"
+                    required
+                >
+
+                <label for="date">Application Date</label>
+                <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    required
+                >
+
+                <label for="status">Application Status</label>
+                <select id="status" name="status">
+                    <option value="Applied">Applied</option>
+                    <option value="Assessment">Assessment</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+
+                <label for="link">Application Link</label>
+                <input
+                    type="url"
+                    id="link"
+                    name="link"
+                    placeholder="https://example.com/jobs"
+                >
+
+                 <button type="submit">Add Application</button>
+            </form>
+        </section>
+
+         
+<section>
+    <h2>My Applications</h2>
+
+    {% if applications %}
+        {% for application in applications %}
+            <div class="application-card">
+                <h3>{{ application['company'] }}</h3>
+                <p>Role: {{ application['role'] }}</p>
+                <p>Date: {{ application['application_date'] }}</p>
+                <p>Status: {{ application['status'] }}</p>
+
+                {% if application['link'] %}
+                    <a href="{{ application['link'] }}"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View Job Posting
+                    </a>
+                {% endif %}
+            </div>
+            
+<form action="{{ url_for('delete_application', application_id=application['id']) }}"
+      method="POST"
+      onsubmit="return confirm('Are you sure you want to delete this application?');">
+    <button type="submit">Delete</button>
+</form>
+
+        {% endfor %}
+    {% else %}
+        <p>No applications added yet.</p>
+    {% endif %}
+</section>
+
+    </main>
+
+    <footer>
+        <p>Internship Tracker | Organize. Apply. Grow.</p>
+    </footer>
+
+</body>
+</html>

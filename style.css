@@ -1,0 +1,152 @@
+
+/* General page styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    color: #252b42;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: #ffffff;
+    padding: 25px 8%;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+header h1 {
+    color: #5546d7;
+    font-size: 28px;
+}
+
+header p {
+    color: #737b91;
+    margin-top: 5px;
+}
+
+/* Main content */
+main {
+    width: 84%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+section {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(30, 40, 80, 0.05);
+}
+
+section h2 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+/* Dashboard cards */
+section:first-child {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+section:first-child h2 {
+    grid-column: 1 / -1;
+}
+
+section:first-child div {
+    background: #f1efff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+section:first-child h3 {
+    font-size: 14px;
+    color: #6d6888;
+}
+
+section:first-child div p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #5546d7;
+    margin-top: 8px;
+}
+
+/* Form */
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce0ea;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #ffffff;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #c7c0ff;
+    border-color: #5546d7;
+}
+
+button {
+    margin-top: 12px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #5546d7;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4032b8;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #737b91;
+    font-size: 13px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    header {
+        padding: 22px 6%;
+    }
+
+    main {
+        width: 92%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    section:first-child {
+        grid-template-columns: 1fr;
+    }
+}
